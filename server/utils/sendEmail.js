@@ -1,10 +1,10 @@
-import nodemailer from 'nodemailer';
+import axios from 'axios';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 /**
- * Reusable utility to send an email via Nodemailer
+ * Reusable utility to send an email via Resend API
  * @param {Object} options - Email options
  * @param {string} options.email - The recipient email address
  * @param {string} options.subject - The subject of the email
@@ -12,33 +12,36 @@ dotenv.config();
  */
 const sendEmail = async (options) => {
   try {
-    // 1. Create a transporter
-    const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-      port: process.env.EMAIL_PORT || 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.warn('RESEND_API_KEY is not defined in environment variables. Email not sent.');
+      return false;
+    }
+
+    // Default sender for Resend sandbox is 'onboarding@resend.dev'
+    // Once you verify your domain, you can set SENDER_EMAIL to something like 'FMCG Portal <portal@vardha.live>'
+    const senderEmail = process.env.SENDER_EMAIL || 'onboarding@resend.dev';
+
+    const response = await axios.post(
+      'https://api.resend.com/emails',
+      {
+        from: senderEmail,
+        to: [options.email],
+        subject: options.subject,
+        html: options.html,
       },
-    });
+      {
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
-    // 2. Define the email options
-    const mailOptions = {
-      from: `FMCG Portal <${process.env.EMAIL_USER}>`,
-      to: options.email,
-      subject: options.subject,
-      html: options.html,
-    };
-
-    // 3. Actually send the email
-    const info = await transporter.sendMail(mailOptions);
-    console.log(`Email sent successfully: ${info.messageId}`);
+    console.log(`Email sent successfully via Resend API. ID: ${response.data.id}`);
     return true;
   } catch (error) {
-    console.error('Error sending email:', error);
-    // We log the error but don't throw it, so the main API response doesn't crash 
-    // if email credentials are wrong or network fails.
+    console.error('Error sending email via Resend API:', error.response?.data || error.message);
     return false;
   }
 };
