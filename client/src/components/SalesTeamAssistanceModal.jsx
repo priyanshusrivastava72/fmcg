@@ -231,8 +231,10 @@ const SalesTeamAssistanceModal = ({ isOpen, onClose }) => {
         return (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
             <SectionHeader icon={Target} title="Sales Requirements" />
-            <div className="grid grid-cols-2 gap-3">
-              {assistanceOptions.map(opt => (
+            <div>
+              <Label required>Select Sales Requirements</Label>
+              <div className="grid grid-cols-2 gap-3">
+                {assistanceOptions.map(opt => (
                 <label key={opt} className={`flex items-center p-3 rounded-xl border transition-all cursor-pointer ${formData.requirements.includes(opt) ? 'bg-green-50 border-green-200' : 'bg-gray-50/50 border-gray-100 hover:bg-white'}`}>
                   <input type="checkbox" className="hidden" checked={formData.requirements.includes(opt)} onChange={() => handleCheckboxChange('requirements', opt)} />
                   <div className={`w-4 h-4 rounded-md border flex items-center justify-center mr-2 ${formData.requirements.includes(opt) ? 'bg-green-600 border-green-600' : 'bg-white border-gray-300'}`}>
@@ -242,6 +244,7 @@ const SalesTeamAssistanceModal = ({ isOpen, onClose }) => {
                 </label>
               ))}
             </div>
+          </div>
             <div className="pt-4 border-t border-gray-100">
               <Label required>Current Monthly Sales</Label>
               <Select options={salesVolumeOptions} required value={formData.monthlySales} onChange={e => setFormData({...formData, monthlySales: e.target.value})} />

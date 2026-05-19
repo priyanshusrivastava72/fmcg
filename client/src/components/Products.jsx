@@ -30,7 +30,7 @@ const products = [
   { id: 10, name: "YES Packaged Drinking Water", category: "Food & Beverages", catId: 'beverages', img: p10 },
   { id: 11, name: "Mayos Instant Noodles", category: "Biscuits & Snacks", catId: 'snacks', img: p11 },
   { id: 13, name: "Dosti Instant Noodles", category: "Biscuits & Snacks", catId: 'snacks', img: p13 },
-  { id: 14, name: "Rupa Beauty Soap", category: "Personal Care", catId: 'personal', img: p14 },
+  { id: 14, name: "Rupa Washing Soap", category: "Home Care", catId: 'home', img: p14 },
   { id: 15, name: "Wai Wai Instant Noodles", category: "Biscuits & Snacks", catId: 'snacks', img: p15 },
   { id: 18, name: "Chameli Matchsticks", category: "Home Care", catId: 'home', img: p18 },
   { id: 19, name: "123 1-Minute Noodle", category: "Biscuits & Snacks", catId: 'snacks', img: p19 },
