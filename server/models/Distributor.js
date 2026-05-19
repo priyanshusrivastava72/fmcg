@@ -2,14 +2,14 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 
 const distributorSchema = new mongoose.Schema({
-  name: {
+  fullName: {
     type: String,
-    required: [true, 'Please provide your name'],
+    required: [true, 'Please provide your full name'],
     trim: true,
   },
-  phone: {
+  mobileNumber: {
     type: String,
-    required: [true, 'Please provide your phone number'],
+    required: [true, 'Please provide your mobile number'],
     validate: {
       validator: function(v) {
         return /\d{10}/.test(v);
@@ -23,9 +23,17 @@ const distributorSchema = new mongoose.Schema({
     lowercase: true,
     validate: [validator.isEmail, 'Please provide a valid email']
   },
-  location: {
+  state: {
     type: String,
-    required: [true, 'Please provide your location']
+    required: [true, 'Please provide your state']
+  },
+  district: {
+    type: String,
+    required: [true, 'Please provide your district']
+  },
+  city: {
+    type: String,
+    required: [true, 'Please provide your city']
   },
   businessType: {
     type: String,
@@ -36,12 +44,33 @@ const distributorSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please select your investment range'],
   },
-  message: {
+  shopName: {
     type: String,
     trim: true
+  },
+  pincode: {
+    type: String,
+    required: [true, 'Please provide your pincode']
+  },
+  address: {
+    type: String,
+    required: [true, 'Please provide your full address']
+  },
+  gstCertificate: {
+    url: String,
+    public_id: String
+  },
+  shopImage: {
+    url: String,
+    public_id: String
+  },
+  warehouseImage: {
+    url: String,
+    public_id: String
   }
 }, { timestamps: true });
 
 const Distributor = mongoose.model('Distributor', distributorSchema);
 
 export default Distributor;
+

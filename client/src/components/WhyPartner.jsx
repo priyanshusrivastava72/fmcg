@@ -5,32 +5,33 @@ import {
   ShieldCheck, Package, TrendingUp, IndianRupee, Users, ArrowRight, Star
 } from 'lucide-react';
 import warehouseImg from '../assets/warehouse_handshake.png';
+import truckImg from '../assets/distributor_truck.png';
 
 const features = [
   {
-    icon: Award,
-    title: '30+ Years of Experience',
-    desc: 'Three decades of excellence in FMCG distribution with deep market understanding and trusted relationships.',
+    icon: Truck,
+    title: 'Express 24-48h Dispatch',
+    desc: 'Our optimized logistics chain ensures that your orders are dispatched within 24-48 hours, keeping your shelves always stocked.',
+  },
+  {
+    icon: IndianRupee,
+    title: 'Flexible Credit Facility',
+    desc: 'We support our long-term partners with flexible credit limits and easy payment terms to help scale your business faster.',
   },
   {
     icon: Network,
-    title: 'Strong Distribution Network',
-    desc: 'Pan India presence with robust supply chain and a wide network of distributors and retailers.',
+    title: 'Deep Rural & Urban Reach',
+    desc: 'Access a massive network of 500+ distributors across 7 states, reaching even the most remote retail touchpoints.',
   },
   {
-    icon: Megaphone,
-    title: 'Marketing & Advertising Support',
-    desc: 'We provide marketing materials, digital support, and promotions to help you grow faster.',
-  },
-  {
-    icon: Truck,
-    title: 'Timely Delivery & Best Quality',
-    desc: 'Efficient logistics and quality assurance to ensure you get the best products, always on time.',
+    icon: TrendingUp,
+    title: 'High-Margin Portfolio',
+    desc: 'Get exclusive access to high-demand FMCG products with industry-leading profit margins and seasonal bonus schemes.',
   },
   {
     icon: Headset,
-    title: 'Dedicated Support',
-    desc: 'Our expert team is always ready to assist you at every step of your business journey.',
+    title: 'Dedicated Relationship Manager',
+    desc: 'No more waiting in queues. Get a dedicated point of contact for all your orders, returns, and business growth queries.',
   },
 ];
 
@@ -44,7 +45,7 @@ const statsBar = [
 
 const WhyPartner = () => {
   return (
-    <section id="about" className="py-20 bg-white overflow-hidden">
+    <section id="about" className="py-10 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
         {/* Header */}
@@ -53,7 +54,7 @@ const WhyPartner = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center"
+          className="text-center mb-10 md:mb-12 pt-4"
         >
           <div className="inline-flex items-center gap-2 text-[#007A4D] text-xs font-bold tracking-widest uppercase mb-4">
             <div className="w-6 h-px bg-[#007A4D]"></div>
@@ -65,14 +66,14 @@ const WhyPartner = () => {
             The Right Partner for{' '}
             <span className="text-[#007A4D]">Long-Term Success</span>
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto text-base leading-relaxed">
+          <p className="text-gray-700 max-w-xl mx-auto text-base font-bold leading-relaxed">
             We go beyond distribution – we build partnerships that grow together.
             Here's what makes us the preferred choice of thousands of partners.
           </p>
         </motion.div>
 
-        {/* Main Content: Left Features + Right Image */}
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+        {/* Main Content: Left Features + Right Overlapping Images */}
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-10 items-center">
 
           {/* Left: Feature List */}
           <motion.div
@@ -92,38 +93,49 @@ const WhyPartner = () => {
                 className="flex items-start gap-5 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-[#EAF5EE] flex items-center justify-center flex-shrink-0 group-hover:bg-[#007A4D] transition-colors duration-300">
-                  <f.icon size={20} className="text-[#007A4D] group-hover:text-white transition-colors duration-300" />
+                  <f.icon size={24} className="text-[#007A4D] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div className="border-b border-gray-100 pb-5 flex-1">
                   <h4 className="text-base font-bold text-gray-900 mb-1">{f.title}</h4>
-                  <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
+                  <p className="text-gray-600 font-bold text-sm leading-relaxed">{f.desc}</p>
                 </div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Right: Image with Quote Overlay */}
+          {/* Right: Layered Image Stack */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative rounded-2xl overflow-hidden shadow-xl group"
+            className="relative h-[320px] sm:h-[450px] w-full"
           >
-            <img
-              src={warehouseImg}
-              alt="FMCG Distribution Partnership"
-              className="w-full h-[480px] object-cover transform group-hover:scale-105 transition-transform duration-[1.5s]"
-            />
-            {/* Dark gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#003d22]/90 via-[#003d22]/30 to-transparent" />
+            {/* Primary Large Warehouse Image */}
+            <div className="absolute top-0 left-0 w-[78%] h-[80%] rounded-[32px] overflow-hidden shadow-xl group z-10">
+              <img
+                src={warehouseImg}
+                alt="FMCG Warehouse Operations"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[1.5s]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#003d22]/80 via-[#003d22]/20 to-transparent" />
+            </div>
 
-            {/* Quote Card */}
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="bg-[#005a31]/80 backdrop-blur-sm border border-white/10 rounded-xl p-5 flex items-start gap-3">
-                <span className="text-white text-5xl font-black leading-none mt-[-6px] opacity-60">"</span>
-                <p className="text-white text-sm font-semibold leading-relaxed">
-                  Our success is built on trust, commitment, and the success of our partners.
+            {/* Overlapping Secondary Logistics Truck Image */}
+            <div className="absolute bottom-0 right-0 w-[55%] h-[55%] rounded-[24px] overflow-hidden shadow-2xl border-4 border-white group/truck z-20">
+              <img
+                src={truckImg}
+                alt="Delivery Truck Fleet Logistics"
+                className="w-full h-full object-cover transform group-hover/truck:scale-105 transition-transform duration-[1.5s]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#002615]/80 via-transparent to-transparent" />
+            </div>
+
+            {/* Floating Quote Overlaid */}
+            <div className="absolute bottom-6 left-6 max-w-[45%] z-30 hidden sm:block">
+              <div className="bg-[#005a31]/90 backdrop-blur-sm border border-white/20 rounded-xl p-4 shadow-xl">
+                <p className="text-white text-xs font-bold leading-relaxed">
+                  "Our success is built on the absolute growth of our partners."
                 </p>
               </div>
             </div>
@@ -142,12 +154,12 @@ const WhyPartner = () => {
             {statsBar.map((s, index) => (
               <div key={index} className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
-                  <s.icon size={18} className="text-white" />
+                  <s.icon size={22} className="text-white" />
                 </div>
                 <div>
                   <p className="text-white font-extrabold text-lg leading-tight">{s.value}</p>
                   <p className="text-white font-bold text-sm">{s.title}</p>
-                  <p className="text-green-300 text-xs mt-0.5">{s.desc}</p>
+                  <p className="text-green-200/90 font-bold text-xs mt-0.5">{s.desc}</p>
                 </div>
               </div>
             ))}
@@ -170,7 +182,7 @@ const WhyPartner = () => {
               <h4 className="text-xl font-extrabold text-gray-900">
                 Ready to <span className="text-[#007A4D]">Grow Your Business?</span>
               </h4>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-700 font-bold text-sm">
                 Join thousands of successful partners and start your journey with us today.
               </p>
             </div>

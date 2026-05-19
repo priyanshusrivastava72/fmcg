@@ -31,13 +31,13 @@ const steps = [
 
 const Process = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-12 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#F3FBF8] rounded-[48px] p-12 md:p-20 relative overflow-hidden">
+        <div className="bg-[#F3FBF8] rounded-[48px] p-8 md:p-20 relative overflow-hidden">
           {/* Background Decorative Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-green-100/50 rounded-full blur-3xl -mr-32 -mt-32"></div>
           
-          <div className="text-center mb-20 relative z-10">
+          <div className="text-center mb-10 md:mb-20 relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-[#007A4D] text-sm font-bold tracking-wide mb-6 shadow-sm">
               <div className="w-4 h-[2px] bg-[#007A4D]"></div>
               HOW IT WORKS

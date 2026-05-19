@@ -10,6 +10,11 @@ import TrustStats from '../components/TrustStats';
 import LeadForm from '../components/LeadForm';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
+import Founder from '../components/Founder';
+import Testimonials from '../components/Testimonials';
+import ScrollToTop from '../components/ScrollToTop';
+import MobileStickyCTA from '../components/MobileStickyCTA';
+import WhatsAppWidget from '../components/WhatsAppWidget';
 
 const Home = () => {
   return (
@@ -18,13 +23,18 @@ const Home = () => {
       <Hero />
       <TrustStats />
       <Brands />
+      <Founder />
       <Products />
       <Services />
+      <Testimonials />
       <Process />
       <WhyPartner />
       <LeadForm />
       <CTA />
       <Footer />
+      <ScrollToTop />
+      <MobileStickyCTA />
+      <WhatsAppWidget />
     </div>
   );
 };

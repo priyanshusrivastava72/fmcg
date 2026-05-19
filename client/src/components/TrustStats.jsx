@@ -31,15 +31,15 @@ const stats = [
   },
   {
     id: 4,
-    value: '28+',
-    title: 'States & UTs Covered',
+    value: '6+',
+    title: 'States Covered',
     desc: 'Extensive reach across the length and breadth of India',
     icon: Map,
   },
   {
     id: 5,
     value: '20,000+',
-    title: 'Orders Delivered Daily',
+    title: 'Orders Delivered',
     desc: 'Reliable and timely delivery you can count on',
     icon: Package,
   },
@@ -62,7 +62,7 @@ const certifications = [
 
 const TrustStats = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-10 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -71,7 +71,7 @@ const TrustStats = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-14"
+          className="text-center mb-8 md:mb-14"
         >
           <div className="inline-flex items-center gap-2 bg-[#EAF5EE] text-[#007A4D] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5">
             <ShieldCheck size={14} />
@@ -81,14 +81,14 @@ const TrustStats = () => {
             Built on <span className="text-[#007A4D]">Trust.</span> Driven by{' '}
             <span className="text-[#E33E2B]">Excellence.</span>
           </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto text-base leading-relaxed">
+          <p className="text-gray-700 font-bold max-w-2xl mx-auto text-base leading-relaxed">
             For over three decades, we have been committed to delivering quality FMCG products
             and building long-term relationships across India.
           </p>
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.id}
@@ -96,14 +96,14 @@ const TrustStats = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 group"
+              className="bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 group"
             >
               <div className="w-12 h-12 rounded-xl bg-[#EAF5EE] flex items-center justify-center mb-5 group-hover:bg-[#007A4D] transition-colors duration-300">
-                <stat.icon size={22} className="text-[#007A4D] group-hover:text-white transition-colors duration-300" />
+                <stat.icon size={28} className="text-[#007A4D] group-hover:text-white transition-colors duration-300" />
               </div>
               <div className="text-4xl font-extrabold text-[#007A4D] mb-1 tracking-tight">{stat.value}</div>
               <div className="text-base font-bold text-gray-900 mb-3">{stat.title}</div>
-              <p className="text-gray-500 text-sm leading-relaxed">{stat.desc}</p>
+              <p className="text-gray-600 font-bold text-sm leading-relaxed">{stat.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -143,7 +143,7 @@ const TrustStats = () => {
                 </div>
                 <div className="text-center">
                   <p className="text-sm font-bold text-gray-900">{cert.name}</p>
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{cert.label}</p>
+                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-wider">{cert.label}</p>
                 </div>
               </motion.div>
             ))}
