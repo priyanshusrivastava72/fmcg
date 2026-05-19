@@ -45,7 +45,8 @@ if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
 const limiter = rateLimit({
   max: 100,
   windowMs: 15 * 60 * 1000,
-  message: 'Too many requests from this IP, please try again in 15 minutes!'
+  message: 'Too many requests from this IP, please try again in 15 minutes!',
+  validate: { trustProxy: false }
 });
 app.use('/api', limiter);
 

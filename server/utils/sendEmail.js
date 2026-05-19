@@ -12,7 +12,10 @@ dotenv.config();
  */
 const sendEmail = async (options) => {
   try {
+    console.log(`sendEmail utility triggered for recipient: ${options.email}`);
     const apiKey = process.env.RESEND_API_KEY;
+    console.log(`Using Resend API Key prefix: ${apiKey ? apiKey.substring(0, 10) + '...' : 'undefined'}`);
+
     if (!apiKey) {
       console.warn('RESEND_API_KEY is not defined in environment variables. Email not sent.');
       return false;
