@@ -28,6 +28,9 @@ connectDB();
 
 const app = express();
 
+// Trust reverse proxy (needed for Render / Heroku rate limiters)
+app.enable('trust proxy');
+
 // 1. GLOBAL MIDDLEWARES
 
 // Set Security HTTP Headers
@@ -47,8 +50,21 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 // Restrict CORS
+const allowedOrigins = [
+  'http://localhost:5173',
+  ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',') : [])
+].map(origin => origin.trim().replace(/\/$/, ''));
+
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps, curl, or server-to-server)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins.includes('*')) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Origin ${origin} not allowed by CORS`));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 };
@@ -70,6 +86,15 @@ app.use('/api/advertising', advertisingRoutes);
 
 app.get('/', (req, res) => {
   res.send('FMCG API is running securely...');
+});
+
+// Health check route
+app.get('/api/health', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Server is healthy!',
+    timestamp: new Date()
+  });
 });
 
 // Handle undefined routes
